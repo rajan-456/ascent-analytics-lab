@@ -82,7 +82,10 @@ function Dashboard() {
             day: "numeric",
           })}
         </p>
-        <h1 className="mt-2 text-2xl font-semibold sm:text-3xl">{greeting()}</h1>
+        <h1 className="mt-2 text-2xl font-semibold sm:text-3xl">
+          Personal Growth Dashboard
+        </h1>
+        <p className="mt-1 text-sm text-muted-foreground">{greeting()}</p>
       </header>
 
       {!todayEntry ? (
