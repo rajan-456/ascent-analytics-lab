@@ -19,6 +19,7 @@ import { Route as AuthenticatedCheckinRouteImport } from './routes/_authenticate
 import { Route as AuthenticatedDashboardRouteImport } from './routes/_authenticated/dashboard'
 import { Route as AuthenticatedGoalsRouteImport } from './routes/_authenticated/goals'
 import { Route as AuthenticatedInsightsRouteImport } from './routes/_authenticated/insights'
+import { Route as AuthenticatedSettingsRouteImport } from './routes/_authenticated/settings'
 import { Route as AuthenticatedStreaksRouteImport } from './routes/_authenticated/streaks'
 import { Route as AuthenticatedTasksRouteImport } from './routes/_authenticated/tasks'
 
@@ -72,6 +73,11 @@ const AuthenticatedInsightsRoute = AuthenticatedInsightsRouteImport.update({
   path: '/insights',
   getParentRoute: () => AuthenticatedRouteRoute,
 } as any)
+const AuthenticatedSettingsRoute = AuthenticatedSettingsRouteImport.update({
+  id: '/settings',
+  path: '/settings',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
 const AuthenticatedStreaksRoute = AuthenticatedStreaksRouteImport.update({
   id: '/streaks',
   path: '/streaks',
@@ -93,6 +99,7 @@ export interface FileRoutesByFullPath {
   '/dashboard': typeof AuthenticatedDashboardRoute
   '/goals': typeof AuthenticatedGoalsRoute
   '/insights': typeof AuthenticatedInsightsRoute
+  '/settings': typeof AuthenticatedSettingsRoute
   '/streaks': typeof AuthenticatedStreaksRoute
   '/tasks': typeof AuthenticatedTasksRoute
 }
@@ -106,6 +113,7 @@ export interface FileRoutesByTo {
   '/dashboard': typeof AuthenticatedDashboardRoute
   '/goals': typeof AuthenticatedGoalsRoute
   '/insights': typeof AuthenticatedInsightsRoute
+  '/settings': typeof AuthenticatedSettingsRoute
   '/streaks': typeof AuthenticatedStreaksRoute
   '/tasks': typeof AuthenticatedTasksRoute
 }
@@ -121,6 +129,7 @@ export interface FileRoutesById {
   '/_authenticated/dashboard': typeof AuthenticatedDashboardRoute
   '/_authenticated/goals': typeof AuthenticatedGoalsRoute
   '/_authenticated/insights': typeof AuthenticatedInsightsRoute
+  '/_authenticated/settings': typeof AuthenticatedSettingsRoute
   '/_authenticated/streaks': typeof AuthenticatedStreaksRoute
   '/_authenticated/tasks': typeof AuthenticatedTasksRoute
 }
@@ -136,6 +145,7 @@ export interface FileRouteTypes {
     | '/dashboard'
     | '/goals'
     | '/insights'
+    | '/settings'
     | '/streaks'
     | '/tasks'
   fileRoutesByTo: FileRoutesByTo
@@ -149,6 +159,7 @@ export interface FileRouteTypes {
     | '/dashboard'
     | '/goals'
     | '/insights'
+    | '/settings'
     | '/streaks'
     | '/tasks'
   id:
@@ -163,6 +174,7 @@ export interface FileRouteTypes {
     | '/_authenticated/dashboard'
     | '/_authenticated/goals'
     | '/_authenticated/insights'
+    | '/_authenticated/settings'
     | '/_authenticated/streaks'
     | '/_authenticated/tasks'
   fileRoutesById: FileRoutesById
@@ -246,6 +258,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedInsightsRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
+    '/_authenticated/settings': {
+      id: '/_authenticated/settings'
+      path: '/settings'
+      fullPath: '/settings'
+      preLoaderRoute: typeof AuthenticatedSettingsRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
     '/_authenticated/streaks': {
       id: '/_authenticated/streaks'
       path: '/streaks'
@@ -270,6 +289,7 @@ interface AuthenticatedRouteRouteChildren {
   AuthenticatedDashboardRoute: typeof AuthenticatedDashboardRoute
   AuthenticatedGoalsRoute: typeof AuthenticatedGoalsRoute
   AuthenticatedInsightsRoute: typeof AuthenticatedInsightsRoute
+  AuthenticatedSettingsRoute: typeof AuthenticatedSettingsRoute
   AuthenticatedStreaksRoute: typeof AuthenticatedStreaksRoute
   AuthenticatedTasksRoute: typeof AuthenticatedTasksRoute
 }
@@ -281,6 +301,7 @@ const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
   AuthenticatedDashboardRoute: AuthenticatedDashboardRoute,
   AuthenticatedGoalsRoute: AuthenticatedGoalsRoute,
   AuthenticatedInsightsRoute: AuthenticatedInsightsRoute,
+  AuthenticatedSettingsRoute: AuthenticatedSettingsRoute,
   AuthenticatedStreaksRoute: AuthenticatedStreaksRoute,
   AuthenticatedTasksRoute: AuthenticatedTasksRoute,
 }
